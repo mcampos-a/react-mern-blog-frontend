@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Card, Button, Container, Row, Col, Container } from 'react-bootstrap'
+import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 
 const HomePage = () => {
     const [posts, setPosts] = useState([])
@@ -26,7 +26,7 @@ const HomePage = () => {
     return(
         <Container>
             <Row>
-                {posts.map((post)=> {
+                {posts.map((post)=> (
                     <Col md={4} className='mb-4' key={post._id}>
                         <Card style={{width: '18rem'}}>
                             <Card.Img variant='top' src={post.image} alt={post.title} />
@@ -40,7 +40,7 @@ const HomePage = () => {
                             </Card.Body>
                         </Card>
                     </Col>
-                })}
+                ))}
             </Row>
         </Container>
     )
