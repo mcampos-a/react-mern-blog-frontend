@@ -7,7 +7,7 @@ const NewPostPage = () => {
 
     const [post, setPost] = useState({
         title: '',
-        authos: '',
+        author: '',
         image: '',
         content: ''
     })

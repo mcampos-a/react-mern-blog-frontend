@@ -7,22 +7,26 @@ const PostPage = () => {
     
     const [post, setPost] = useState({
             title: '',
-            authos: '',
+            author: '',
             image: '',
             content: ''
         })
     const {id} = useParams() //this will allow us to reach out to the API and grab the 'id' object of a page
-
+    
     useEffect(() => {
-        const fetchPost = async () => {
-            const res = await axios.get(`http://localhost:4343/posts/${id}`)
-            setPost(res.data)
-        }
-        fetchPost()
-    }, [id]) //this is the condition that lets useEffect know that if the if is defferent from what was called first
+    const fetchPost = async () => {
+      try {
+        const res = await axios.get(`http://localhost:4343/posts/${id}`)
+        setPost(res.data)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    fetchPost()
+  }, [id]) //this is the condition that lets useEffect know that if the if is defferent from what was called first
 
     return(
-        <Container ClassName= 'mt-4'>
+        <Container className= 'mt-4'>
             <Card>
                 <div style={{maxHeight: '500px', overflow: 'hidden'}}>
                     <Card.Img className='img-fluid' variant='top' src={post.image} alt={post.title}/>
